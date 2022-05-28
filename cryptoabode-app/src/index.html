@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Estate Marketplace</title>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link href="style.css" type="text/css" rel="Stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/95dc93da07.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+</head>
+
+<body>
+    <div id="header-hero-container">
+        <header>
+            <div class="flex container">
+                <a id="logo" href="#">CryptoAbode</a>
+                <nav>
+                    <button id="nav-toggle" class="hamburger-menu">
+                        <span class="strip"></span>
+                        <span class="strip"></span>
+                        <span class="strip"></span>
+                    </button>
+
+                    <ul id="nav-menu">
+                        <li><a href="#" class="active">Home</a></li>
+                        <li><a href="#agents" target="_blank">Buy Properties</a></li>
+                        <li><a href="#contact" target="_blank">Sell Properties</a></li>
+                        <li><a href="#register">User registration request</a></li>
+                        <li><a href="#admin">Admin</a></li>
+                        <li><a href="#auditor">Auditor</a></li>
+                        <li id="close-flyout"><span class="fas fa-times"></span></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        
+        <section id="hero">
+            <div class="fade"></div>
+            <div class="hero-text">
+                <h1>Buy and sell real estate properties</h1>
+                
+                <button class="button-53" onClick="App.handleGetBalance();">Check My Token Balance</button>
+                <div class="user-token-balance"></div>
+            </div>
+            <!-- <ul class="list" id="show-balance">
+                <li>
+                  <div>
+                    <h4>
+                      <strong
+                        ><span>Balance </span>
+                    </h4>
+                  </div>
+                </li>
+              </ul> -->
+            <div class="show-balance"></div>
+        </section>
+    </div>
+     <br>
+     <br>
+    <div class="airdrop">
+        <center>
+        <h2><div>Air Drop RealT Tokens</div></h2>
+        <input type="text" id="receiverAddress" name="receiverAddress" placeholder="Enter the Account Address">
+        <input type="text" id="tokenAmount" name="tokenAmount" placeholder="Enter the Number of Tokens">
+        <br>
+        <br>
+        <button class='button-53' role='button' onclick="App.handleAirdropToken();">Send Tokens</button>
+        <br>
+        <br>
+        </center>
+      </div>
+
+    <section id="agents">
+        <div class="container">
+            <center><h2>Properties recently Posted!<br>Buy Properties</h2></center>
+            <!-- displayEstates -->
+            <div class="flex" id = "displayEstates">
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Sell properties</h2>
+            <div class="flex">
+                <div id="form-container">
+                    <h3>Enter the property details!</h3>
+                    <form>
+                        <label for="name">Location</label>
+                        <input type="text" id="estate-location" />
+
+                        <label for="email">Image URL</label>
+                        <input type="text" id="estate-img" />
+
+                        <label for="subject">Features</label>
+                        <input type="text" id="estate-feat" />
+
+                        <label for="message">Estimated Minimum Price</label>
+                        <input type="number" id="estate-cost" />
+                    
+                        <br>
+                        <button class="button-53" onClick="App.handleAddEstate();">Post the property</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="register">
+        <div class="container">
+            <h2>Register your details and get approval to enter the estate world!</h2>
+            <div class="flex">
+                <div id="form-container">
+                    <!-- <h3>Enter the property details!</h3> -->
+                    <form>
+                        <label for="name">Name</label>
+                        <input type="text" id="user-name" />
+
+                        <label for="email">Contact</label>
+                        <input type="text" id="user-contact" />
+
+                        <label for="subject">Location</label>
+                        <input type="text" id="user-location" />
+                        <br>
+                        <button class="button-53" onClick="App.handleAddUser();">Sign Me Up</button>
+                        <!-- <button class="rounded" onClick="App.handleRegisterAuditor();">Register as an Auditor</button> -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="admin">
+        <div class="container">
+            <br>
+            <br>
+            <br>
+            <!-- <h2>Approve user registration (Only for Admin)</h2> -->
+            <div id="show-users">
+                    <!-- <ul class="list" id="show-users">
+                      <li>
+                        <div>
+                            <h4>
+                              <strong
+                                ><span>User ID - </span><span>Name - </span><span>User Type - </span> <span>Contact - </span
+                                ><span>Location </span>
+                            </h4>
+                          </div>
+                      </li>
+                    </ul> -->
+                    <div id="render-user-details"></div>
+            </div>
+        </div>
+    </section>
+    <br>
+    <br>
+    <br>
+    <section id="auditor">
+        <div class="container">
+            <!-- <h2>Verify property (Only for Auditor)
+            </h2> -->
+            <div id="show-estates">
+                    <!-- <ul class="list" id="show-estates">
+                      <li>
+                        <div>
+                          <h4>
+                            <strong
+                              ><span>Location - </span><span>Estimated Minimum Price - </span><span>Feature</span>
+                          </h4>
+                        </div>
+                      </li>
+                    </ul> -->
+            </div>
+        </div>
+    </section>
+  
+
+   <!-- <script src="/app.js"></script> -->
+   <script>
+    function placebid() {
+      alert("The mentioned amount has been bidden!");
+    }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
